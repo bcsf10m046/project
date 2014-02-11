@@ -1,0 +1,122 @@
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="EN" lang="EN" dir="ltr">
+<head profile="http://gmpg.org/xfn/11">
+<title>BusinessToday</title>
+<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1" />
+<meta http-equiv="imagetoolbar" content="no" />
+<link rel="stylesheet" href="~/content/layout.css" type="text/css" />
+</head>
+<body id="top">
+<div class="wrapper col1">
+  <div id="header">
+    <div id="logo">
+      <h1><a href="#">FREE FORUM</a></h1>
+      <p><strong>Its a free for for sale and purchase </strong></p>
+    </div>
+    <div id="newsletter">
+        @{if(ViewBag.name == null){
+      <p>       Login to post new ads of your product.  </p>
+      <form action="/Home/Login" method="post">
+        <fieldset>
+          <legend>NewsLetter</legend>
+          <input type="text" name="Name" value="Name&hellip;"  onfocus="this.value=(this.value=='Name&hellip;')? '' : this.value ;" />
+          <input type="text" name="Password" value="Password&hellip;"  onfocus="this.value=(this.value=='Password&hellip;')? '' : this.value ;" />
+          <input type="submit" name="news_go" id="news_go" value="LOGIN" />
+        </fieldset>
+      </form>
+            <p> </p>
+            <p> If you don't have account than kindly signup </p>
+            
+            
+        <!--    @Html.ActionLink("SIGNUP", "Signup", "Signup") -->
+            
+            <form action="/Signup/SignUp"  method ="post">
+                          <input type="submit" name="news_go" id="news_go" value="Sign-up" />
+
+            </form>
+            
+        }
+        else{
+              <p>Hello, @Session["name"]</p>
+            <a href ="/Home/Logout" >Logout </a>
+            
+        }}
+    </div>
+    <br class="clear" />
+  </div>
+</div>
+<div class="wrapper col2">
+  <div id="topbar">
+    <div id="topnav">
+      <ul>
+        <li class="active"><a href="~/Home/Index">  HOME  </a></li>
+        <li><a href="~/Home/Aboutus">  OUR SRVICES  </a></li>
+        <li><a href="~/Home/Contact">  CONTACT US  </a></li>
+        <li><a href="~/Post/Post">  POSTS  </a></li>
+      </ul>
+    </div>
+    <div id="search">
+      <form action="/Home/Search" method="post">
+        <fieldset>
+          <legend>Site Search</legend>
+                          <div class="controls">
+                                <select class="form-control" name="name">
+                                <option>Bike</option>
+                                <option>Car</option>
+                                <option>Property</option>
+                                <option>Mobile</option>
+                                <option>Stationary</option>
+                                <option>Laptop</option>
+                                <option>Others</option>
+                                </select>
+                              <input type="submit" name="go" id="go" value="SEARCH" />
+                            </div>
+                                    
+        </fieldset>
+      </form>
+    </div>
+    <br class="clear" />
+  </div>
+</div>
+<div class="wrapper col3">
+  <div id="intro">
+    <div class="fl_left">
+      <h2>This website is available 24/7 to provide you people a good forum to sale or purchase several things.</h2>
+     
+    </div>
+    <div class="fl_right"><img src="~/images/1.jpg" alt="" /></div>
+    <br class="clear" />
+  </div>
+</div>
+<div class="wrapper col4">
+  
+</div>
+<div class="wrapper col5">
+  <div id="container">
+    <div id="content">
+      <h1>OVERVIEW</h1>
+      <p></p>
+      <p><strong>As mentioned above this webiste provide you 100 percent safe and secure platform to sale or purchase things. Five types of different things as mentioned in categories can be sale or purchase through this website.</strong> </p>
+    <p></p>
+        <p><strong>User can post several ads but he has to login first.</strong></p>
+        <p></p>
+        <p><strong>People can see all posts of their own demand by searching with the name of particular thing.</strong></p> 
+    </div>
+    <div id="column">
+      
+    </div>
+    <br class="clear" />
+  </div>
+</div>
+
+
+<div class="wrapper col7">
+  <div id="copyright">
+    <p class="fl_left">Copyright &copy; 2014 - All Rights Reserved - <a href="#">www.freeforum.com</a></p>
+    <p class="fl_right">Website by <a href="http://www.os-templates.com/" title="Free Website Templates">Syed Adnan Ul Hassan</a></p>
+    <br class="clear" />
+  </div>
+</div>
+</body>
+</html>
