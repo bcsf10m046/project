@@ -1,0 +1,126 @@
+@{
+    Layout = null;
+}
+
+@model List<MvcApplication1.Models.Post>
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="EN" lang="EN" dir="ltr">
+<head profile="http://gmpg.org/xfn/11">
+        <script type="text/javascript" src="/Scripts/jquery-1.7.1.js"></script>
+<title>BusinessToday</title>
+<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1" />
+<meta http-equiv="imagetoolbar" content="no" />
+<link rel="stylesheet" href="~/content/layout.css" type="text/css" />
+</head>
+<body id="top">
+<div class="wrapper col1">
+  <div id="header">
+    <div id="logo">
+      <h1><a href="#">FREE FORUM</a></h1>
+      <p><strong>Its a free for for sale and purchase </strong></p>
+    </div>
+    <div id="newsletter">
+        @{if(ViewBag.name == null){
+                  @Scripts.Render("~/bundles/jquery")
+                    <script type="text/jscript">
+                        $(document).ready(function () {
+                            $('#text').text("First you sign up your account");
+                        });
+                  </script>
+            
+      <p>       Login to post new ads of your product.  </p>
+      <form action="/Home/Login" method="post">
+        <fieldset>
+          <legend>NewsLetter</legend>
+          <input type="text" name="Name" value="Name&hellip;"  onfocus="this.value=(this.value=='Name&hellip;')? '' : this.value ;" />
+          <input type="text" name="Password" value="Password&hellip;"  onfocus="this.value=(this.value=='Password&hellip;')? '' : this.value ;" />
+          <input type="submit" name="news_go" id="news_go" value="LOGIN" />
+        </fieldset>
+      </form>
+            <p> </p>
+            <p> If you don't have account than kindly signup </p>
+<!--            <input type="button" name="news_go" id="news_go" value="SIGNUP"/> -->
+            @Html.ActionLink("SIGNUP", "Signup", "Signup")
+        }
+        else{
+              @Scripts.Render("~/bundles/jqueryval")
+            <script type="text/jscript">
+                $(document).ready(function () { $('#menu').show(); });
+
+            </script>
+             
+              <p>Hello, @Session["name"]</p>
+            <a href ="/Home/Logout" >Logout </a>
+            
+        }}
+    </div>
+    <br class="clear" />
+  </div>
+</div>
+<div class="wrapper col2">
+  <div id="topbar">
+    <div id="topnav">
+      <ul>
+        <li class="active"><a href="~/Home/Index">  HOME  </a></li>
+        <li><a href="~/Home/Aboutus">  OUR SRVICES  </a></li>
+        <li><a href="~/Home/Contact">  CONTACT US  </a></li>
+        <li><a href="~/Post/Post">  POSTS  </a></li>
+      </ul>
+    </div>
+
+
+       <div id="search">
+      <form action="/Home/Search" method="post">
+        <fieldset>
+          <legend>Site Search</legend>
+                          <div class="controls">
+                                <select class="form-control" name="name">
+                                <option>Bike</option>
+                                <option>Car</option>
+                                <option>Property</option>
+                                <option>Mobile</option>
+                                <option>Stationary</option>
+                                <option>Laptop</option>
+                                <option>Others</option>
+                                </select>
+                              <input type="submit" name="go" id="go" value="SEARCH" />
+                            </div>
+                                    
+        </fieldset>
+      </form>
+    </div>
+
+    <br class="clear" />
+
+    <table width="700px" cellspacing="0" cellpadding="5">
+        <tr bgcolor="#CCCCCC">
+        <th width="220" align="left">Image </th> 
+        <th width="180" align="left">Model</th> 
+        <th width="100" align="center">Product Name</th> 
+        <th width="60" align="right">Price </th> 
+        </tr>
+        
+        @foreach(var x in Model){
+        
+        <tr>
+                        	<td><img  height=200px width=200px src="@x.ImagePath" alt="image 01" /></td> 
+                        	<td>@x.Model</td> 
+                            <td align="center">@x.ProductName</td>
+                            <td align="right">$@x.Price</td>
+						</tr>
+        }
+	</table>
+  </div>
+</div>
+
+<div class="wrapper col7">
+  <div id="copyright">
+    <p class="fl_left">Copyright &copy; 2014 - All Rights Reserved - <a href="#">www.freeforum.com</a></p>
+    <p class="fl_right">Website by <a href="http://www.os-templates.com/" title="Free Website Templates">Syed Adnan Ul Hassan</a></p>
+    <br class="clear" />
+  </div>
+</div>
+</body>
+</html>
+
